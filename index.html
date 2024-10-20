@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <link rel="shortcut icon" href="favicon.png" />
+  <link rel="bookmark"href="favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypixel加速</title>
+<style>
+        .classfont{
+              font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+        }  
+        html,body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+           
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: 40%;
+            object-fit: cover;
+       }
+
+        nav {
+            background: #333;
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .logo img {
+            width: 150px; /* 更改logo大小 */
+            height: auto;  /* 保持宽高比 */
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+
+        .content {
+            position:relative;
+            padding: auto auto 20% auto;
+            text-align: center;
+            color: #333;
+        }
+
+        .rounded-box {
+            position: relative;
+            background: rgba(255, 255, 255, 0.6);
+            margin: 105px auto 20% auto; 
+            padding: 0 auto 20% auto;
+            width: 500px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* 允许垂直滚动 */
+            
+            
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1000;
+            
+        }
+        .flex-container {
+        display: flex;
+        flex-direction: column; /* 子项垂直排列 */
+        min-height: 100vh; /* 最小高度为视口的100% */
+        margin: 0; /* 移除默认的外边距 */
+        padding: 0; /* 移除默认的内边距 */
+}
+
+        @media (max-width: 600px) {
+            nav, footer {
+                padding: 10px;
+            }
+            .rounded-box {
+                width: 100%;
+            }
+        }
+
+          #musicButton {
+          position: fixed;
+          bottom: 114px;
+          right: 114px;
+          width: 50px;
+          height: 50px;
+          background-image: url('play.png'); /* 替换为你的播放按钮图片 */
+          background-size: cover;
+          cursor: pointer;
+   }
+    #musicButton.playing {
+    background-image: url('stop.png'); /* 替换为你的暂停按钮图片 */
+  }
+
+</style>
+</head>
+<body>
+<div class="flex-container">
+    <video autoplay muted loop class="video-background">
+        <source src="bgvideo.mp4" type="video/mp4">
+        <source src="bgvideo.ogg" type="video/ogg">
+    </video>
+    <nav>
+        <div class="logo">
+            <img src="hypixel.png" alt="Logo">
+        </div>
+        <div style="margin-left: auto;" style="classfont">
+            <a href="https://hypixel.net" target="_blank">关于Hypixel</a>
+            <a href="#">其他待开放</a>
+        </div>
+    </nav>
+   
+    <div class="content">
+        <!-- 将.rounded-box的内容包装在一个链接中 -->
+        <div class="rounded-box">
+            <h1 style="font-size: 40px;" style="classfont">Hypixel加速IP网站大全</h1><br />
+            <a style="color:black" href="https://www.hypixel.cn" target="_blank">
+                <p style="font-size: 20px;" style="classfont">Hypixel中国 加速IP团体</p>
+            </a>
+            <a style="color:black" href="https://www.jsip.club" target="_blank">
+                <p style="font-size: 20px;" style="classfont">Hypixel公益加速IP收录页</p>
+            </a>
+            <a style="color:black" href="https://speed.hypixel.com.cn" target="_blank">
+                <p style="font-size: 20px;" style="classfont">忆加速公益加速平台</p>
+            </a>
+            <a style="color:black" href="https://free.hypixel.cn" target="_blank">
+                <p style="font-size: 20px;" style="classfont">Hypixel 中国</p>
+            </a>
+        </div>
+    </div>
+            
+    <footer>
+        <p>建议在PC端访问此网站以获得更好效果 <a style="color: white;"  href="problems.html" target="_blank">遇到问题</a></p>
+    </footer>
+<audio id="audioPlayer" autoplay>
+  <source src="otherside.mp3" type="audio/mpeg">
+</audio>
+<div id="musicButton">
+</div>
+
+<script>
+  const audioPlayer = document.getElementById('audioPlayer');
+  const musicButton = document.getElementById('musicButton');
+
+  musicButton.addEventListener('click', function() {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      musicButton.classList.add('playing');
+    } else {
+      audioPlayer.pause();
+      musicButton.classList.remove('playing');
+    }
+  });
+
+  audioPlayer.addEventListener('ended', function() {
+    audioPlayer.pause();
+    musicButton.classList.remove('playing');
+  });
+</script>
+</div>
+</body>
+</html>
